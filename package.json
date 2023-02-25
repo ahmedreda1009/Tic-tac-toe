@@ -1,0 +1,18 @@
+{
+	"name": "tic-tac-toe",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"dev": "parcel src/index.html"
+	},
+	"author": "ahmed reda",
+	"license": "ISC",
+	"dependencies": {
+		"bootstrap": "^5.2.2"
+	},
+	"devDependencies": {
+		"parcel-bundler": "^1.12.5",
+		"sass": "^1.55.0"
+	}
+}
