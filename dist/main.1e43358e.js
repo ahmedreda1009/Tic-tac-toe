@@ -119,17 +119,11 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"src/main.js":[function(require,module,exports) {
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 var playerXMoves = [];
 var playerOMoves = [];
 var history = [];
@@ -142,7 +136,6 @@ var movesDivs = document.querySelectorAll('.moves .moves-block button');
 var winnerPlyer = document.querySelector('.info .winner span');
 var nextPlayerField = document.querySelector('.info .next-player span');
 var moves = document.querySelector('.moves .moves-block');
-
 function isPlayerWon(arr) {
   var winArra = [];
   var result = winCases.some(function (element) {
@@ -152,7 +145,6 @@ function isPlayerWon(arr) {
     winArra = element;
     return res;
   });
-
   if (result) {
     squares.forEach(function (ele) {
       if (winArra.includes(+ele.dataset.id)) {
@@ -161,19 +153,15 @@ function isPlayerWon(arr) {
     });
     nextPlayerField.textContent = '...';
   }
-
   return result;
 }
-
 function CheckWinner(clickedSquare) {
   if (clickedSquare.textContent || winner) return;
   clickedSquare.textContent = currentPlayer;
-
   if (currentPlayer === 'X') {
-    playerXMoves.push(+clickedSquare.dataset.id); // currentPlayer = 'O';
-
+    playerXMoves.push(+clickedSquare.dataset.id);
+    // currentPlayer = 'O';
     winner = isPlayerWon(playerXMoves);
-
     if (winner) {
       winnerPlyer.textContent = 'X';
     } else {
@@ -181,10 +169,9 @@ function CheckWinner(clickedSquare) {
       nextPlayerField.textContent = currentPlayer;
     }
   } else {
-    playerOMoves.push(+clickedSquare.dataset.id); // currentPlayer = 'X';
-
+    playerOMoves.push(+clickedSquare.dataset.id);
+    // currentPlayer = 'X';
     winner = isPlayerWon(playerOMoves);
-
     if (winner) {
       winnerPlyer.textContent = 'O';
     } else {
@@ -192,7 +179,6 @@ function CheckWinner(clickedSquare) {
       nextPlayerField.textContent = currentPlayer;
     }
   }
-
   var hisObj = {
     x: _toConsumableArray(playerXMoves),
     o: _toConsumableArray(playerOMoves),
@@ -212,7 +198,6 @@ function CheckWinner(clickedSquare) {
   moves.append(moveBlock);
   movesCounter++;
 }
-
 function displayHistory(historyObj) {
   nextPlayerField.textContent = historyObj.next;
   winnerPlyer.textContent = historyObj.winnerP;
@@ -226,7 +211,6 @@ function displayHistory(historyObj) {
     }
   });
 }
-
 squares.forEach(function (ele) {
   ele.addEventListener('click', function () {
     CheckWinner(ele);
@@ -247,11 +231,10 @@ document.getElementById('play-again').addEventListener('click', function () {
   nextPlayerField.textContent = currentPlayer;
   winnerPlyer.textContent = '...';
 });
-},{}],"../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
-
 function Module(moduleName) {
   OldModule.call(this, moduleName);
   this.hot = {
@@ -267,37 +250,32 @@ function Module(moduleName) {
   };
   module.bundle.hotData = null;
 }
-
 module.bundle.Module = Module;
 var checkedAssets, assetsToAccept;
 var parent = module.bundle.parent;
-
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60339" + '/');
-
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61975" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
     var data = JSON.parse(event.data);
-
     if (data.type === 'update') {
       var handled = false;
       data.assets.forEach(function (asset) {
         if (!asset.isNew) {
           var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
-
           if (didAccept) {
             handled = true;
           }
         }
-      }); // Enable HMR for CSS by default.
+      });
 
+      // Enable HMR for CSS by default.
       handled = handled || data.assets.every(function (asset) {
         return asset.type === 'css' && asset.generated.js;
       });
-
       if (handled) {
         console.clear();
         data.assets.forEach(function (asset) {
@@ -311,20 +289,16 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         location.reload();
       }
     }
-
     if (data.type === 'reload') {
       ws.close();
-
       ws.onclose = function () {
         location.reload();
       };
     }
-
     if (data.type === 'error-resolved') {
       console.log('[parcel] ✨ Error resolved');
       removeErrorOverlay();
     }
-
     if (data.type === 'error') {
       console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
       removeErrorOverlay();
@@ -333,19 +307,17 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
     }
   };
 }
-
 function removeErrorOverlay() {
   var overlay = document.getElementById(OVERLAY_ID);
-
   if (overlay) {
     overlay.remove();
   }
 }
-
 function createErrorOverlay(data) {
   var overlay = document.createElement('div');
-  overlay.id = OVERLAY_ID; // html encode message and stack trace
+  overlay.id = OVERLAY_ID;
 
+  // html encode message and stack trace
   var message = document.createElement('div');
   var stackTrace = document.createElement('pre');
   message.innerText = data.error.message;
@@ -353,41 +325,31 @@ function createErrorOverlay(data) {
   overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
   return overlay;
 }
-
 function getParents(bundle, id) {
   var modules = bundle.modules;
-
   if (!modules) {
     return [];
   }
-
   var parents = [];
   var k, d, dep;
-
   for (k in modules) {
     for (d in modules[k][1]) {
       dep = modules[k][1][d];
-
       if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
         parents.push(k);
       }
     }
   }
-
   if (bundle.parent) {
     parents = parents.concat(getParents(bundle.parent, id));
   }
-
   return parents;
 }
-
 function hmrApply(bundle, asset) {
   var modules = bundle.modules;
-
   if (!modules) {
     return;
   }
-
   if (modules[asset.id] || !bundle.parent) {
     var fn = new Function('require', 'module', 'exports', asset.generated.js);
     asset.isNew = !modules[asset.id];
@@ -396,60 +358,47 @@ function hmrApply(bundle, asset) {
     hmrApply(bundle.parent, asset);
   }
 }
-
 function hmrAcceptCheck(bundle, id) {
   var modules = bundle.modules;
-
   if (!modules) {
     return;
   }
-
   if (!modules[id] && bundle.parent) {
     return hmrAcceptCheck(bundle.parent, id);
   }
-
   if (checkedAssets[id]) {
     return;
   }
-
   checkedAssets[id] = true;
   var cached = bundle.cache[id];
   assetsToAccept.push([bundle, id]);
-
   if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
     return true;
   }
-
   return getParents(global.parcelRequire, id).some(function (id) {
     return hmrAcceptCheck(global.parcelRequire, id);
   });
 }
-
 function hmrAcceptRun(bundle, id) {
   var cached = bundle.cache[id];
   bundle.hotData = {};
-
   if (cached) {
     cached.hot.data = bundle.hotData;
   }
-
   if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
     cached.hot._disposeCallbacks.forEach(function (cb) {
       cb(bundle.hotData);
     });
   }
-
   delete bundle.cache[id];
   bundle(id);
   cached = bundle.cache[id];
-
   if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
     cached.hot._acceptCallbacks.forEach(function (cb) {
       cb();
     });
-
     return true;
   }
 }
-},{}]},{},["../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/main.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/main.js"], null)
 //# sourceMappingURL=/main.1e43358e.js.map

@@ -2,6 +2,12 @@ body {
   background-color: #222;
   color: #fff;
 }
+@media (max-width: 500px) {
+  body .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
 body .main {
   width: 300px;
 }
