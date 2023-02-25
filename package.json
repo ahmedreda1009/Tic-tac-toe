@@ -5,9 +5,10 @@
 	"description": "",
 	"main": "main.js",
 	"scripts": {
-		"dev": "parcel index.html",
-		"predeploy": "npm run dev",
-		"deploy": "gh-pages -d dev"
+		"dev": "parcel src/index.html",
+		"build": "parcel build src/index.html",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist"
 	},
 	"author": "ahmed reda",
 	"license": "ISC",
