@@ -6,9 +6,8 @@
 	"main": "main.js",
 	"scripts": {
 		"dev": "parcel index.html",
-		"build": "parcel build",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"predeploy": "npm run dev",
+		"deploy": "gh-pages -d dev"
 	},
 	"author": "ahmed reda",
 	"license": "ISC",
